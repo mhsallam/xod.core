@@ -39,6 +39,6 @@ This little documentation gives you brief guide lines for how to utilize XOD for
 
 
 ## .NETCore
-This repo has been compiled against .NETCore framework, if you want to use XOD with .NET Framework please visit:
+This repository has been compiled with .NETCore framework, if you want to use XOD with .NET Framework please visit:
 [XOD (for .NET Framework)](https://github.com/mhsallam/xod)
 
