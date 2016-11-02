@@ -1,7 +1,7 @@
 {
   "title": "XOD Database (.NETCore)",
   "name": "Xod.Core",
-  "version": "0.1.0-beta-build-03",
+  "version": "0.1.1-beta-build-03",
   "description": "Light-weight yet powerfull XML-based OO/NoSQL thread-safe embedded database for .NETCore",
   "authors": [
     "Mohammed Sallam"
