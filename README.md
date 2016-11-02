@@ -37,8 +37,113 @@ This little documentation gives you brief guide lines for how to utilize XOD for
 14. Eager/Lazy data loading options
 15. Thread-safe
 
+## Getting Started
+You can download Xod library from dist folder in this repository or add it directly to your application as NuGet package, to do this:
 
-## .NETCore
-This repository has been compiled with .NETCore framework, if you want to use XOD with .NET Framework please visit:
+* Open your command prompt and execute the following:
+
+```mkdir xodConsoleApp```
+```cd xodConsoleApp```
+```dotnet new```
+```code ./```
+
+Executing the above sequence of commands will:
+
+..+ Create a new folder named ```xodConsoleApp```
+
+..+ Open ```xodConsoleApp``` folder
+
+..+ Initiate new .NETCore project in this folder
+
+..+ Open this project with Visual Studio Code
+
+* Edit project.json file and add Xod library to the dependencies of the project:
+
+```
+"dependencies": {
+   "Xod.Core": "0.1.0-beta"
+}
+```
+
+
+* Because we edited ```project.json``` file we need to go back to the command prompt and run this command:
+
+```
+dotnet restore
+```
+
+* Now, let's try some code; in Program.cs add ```using Xod;``` namespace
+
+* Create a new class ```ToDo``` with the following properties 
+
+```csharp
+public class ToDo
+{
+   public int Id { get; set; }
+   public string Title { get; set; }
+   public bool Done { get; set; }
+}
+``` 
+
+* Add this code to ```Main()``` method:
+
+```csharp
+XodContext db = new XodContext(@"c:\xod\data.xod");
+db.Insert(new ToDo() { Title = "Read a book" });
+```
+
+* Run the application using this command:
+
+```
+dotnet run
+```
+
+When running the application, a new Xod database will be created unless it was already exist, then a new object of ToDo class will be inserted into the database.
+
+* Go to the database path (in our exampe c:\\xod) and check out the database contents in xml-format files.
+
+
+#### Complete Example
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Xod;
+
+namespace XodConsoleApplication
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            XodContext db = new XodContext(@"c:\xod\data.xod");
+
+            //insert new object
+            db.Insert(new ToDo() { Title = "Read a book" });
+
+            //read the new inserted object
+            var tdi = db.FirstMatch<ToDo>(s => s.Id == 1);
+
+            //update the object
+            tdi.Done = true;
+            db.Update(tdi);
+            
+            Console.WriteLine("Xod operations completed!");
+            Console.ReadKey();
+        }
+    }
+
+    public class ToDo
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public bool Done { get; set; }
+    }
+}
+```
+
+## .NET Framework Version
+This repository has been compiled for .NETCore framework, if you want to use XOD with .NET Framework please visit:
 [XOD (for .NET Framework)](https://github.com/mhsallam/xod)
 

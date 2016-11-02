@@ -1,8 +1,8 @@
 {
   "title": "XOD Database (.NETCore)",
   "name": "Xod.Core",
-  "version": "1.0.0-beta03",
-  "description": "Lite yet powerfull XML-based OO/NoSQL thread-safe database for .NETCore",
+  "version": "0.1.0-beta",
+  "description": "Light-weight yet powerfull XML-based OO/NoSQL thread-safe embedded database for .NETCore",
   "authors": [
     "Mohammed Sallam"
   ],
@@ -13,7 +13,7 @@
       "Mohammed Sallam"
     ],
     "iconUrl": "https://raw.githubusercontent.com/mhsallam/xod/master/logo.jpg",
-    "summary": "Lite yet powerfull XML-based OO/NoSQL thread-safe database for .NETCore",
+    "summary": "Light-weight yet powerfull XML-based OO/NoSQL thread-safe embedded database for .NETCore",
     "tags": [
       "Object Oriented",
       "NoSQL",

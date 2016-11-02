@@ -1,5 +1,5 @@
 *~
-/src/.vscode/
-/src/obj/
-/src/bin/
-/src/tmp/
+src/.vscode/
+src/obj/
+src/bin/
+src/tmp/
