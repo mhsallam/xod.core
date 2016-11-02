@@ -58,7 +58,7 @@ namespace Xod.Helpers
             using (CryptoStream cryptostreamDecr = new CryptoStream(fsread, aesDecrypt, CryptoStreamMode.Read)) {
                 //Print the contents of the decrypted file.
                 //Create a file stream to write the decrypted file back.
-                FileStream fswrite = new FileStream(outputFile, FileMode.OpenOrCreate, FileAccess.Write);
+                FileStream fswrite = new FileStream(outputFile, FileMode.Create, FileAccess.Write);
                 using(StreamWriter fsDecrypted = new StreamWriter(fswrite)) {
                     fsDecrypted.Write(new StreamReader(cryptostreamDecr).ReadToEnd());
                 }

@@ -26,7 +26,6 @@ namespace Xod.Engines.Xml
         IXodSecurityService securityService = null;
         PropertyService propertyService = null;
         AutonumberService autonumberService = null;
-        IndexService indexService = null;
         ItemsCacheService itemsCacheService = null;
         LogService logService = null;
         ExceptionService exceptionService = null;
@@ -102,7 +101,6 @@ namespace Xod.Engines.Xml
             this.itemsCacheService = new ItemsCacheService(path);
             this.exceptionService = new ExceptionService(path);
 
-            this.indexService = new IndexService(this.propertyService);
             this.autonumberService = new AutonumberService(path,
                 this.propertyService,
                 this.ioService,
@@ -1049,7 +1047,7 @@ namespace Xod.Engines.Xml
                         string.Format("{0}.{1}", pageCode, rowCodeAtt.Value) : "";
 
                     //clear cached resources of this item and its related items
-                    this.itemsCacheService.Clear(itemCode);
+                    this.itemsCacheService.Clear(type, rowCodeAtt.Value);
 
                     ReadWriteTrack itemTrack = new ReadWriteTrack()
                     {
@@ -2416,7 +2414,7 @@ namespace Xod.Engines.Xml
             //this.itemsCacheService.Clear();
             this.propertyService.LoadType(type);
             //lazyLoad = (lazyLoad) ? true : this.LazyLoad;
-            string docFileName = string.Format("{0}.xtab", type.ToString());
+            string docFileName = string.Format("{0}.xtab", type.FullName);
             XFile tableFile = this.ioService.OpenFileOrCreate(docFileName, type, true);
             if (tableFile != null)
             {
@@ -2788,11 +2786,11 @@ namespace Xod.Engines.Xml
         {
             return SelectItemsByExamples(type, examples, include);
         }
-        public object FirstMatch(Type type, Func<dynamic, bool> query, string include = null)
+        public object Find(Type type, Func<dynamic, bool> query, string include = null)
         {
             return SelectItems(type, query, false, include).FirstOrDefault();
         }
-        public object LastMatch(Type type, Func<dynamic, bool> query, string include = null)
+        public object FindLast(Type type, Func<dynamic, bool> query, string include = null)
         {
             return SelectItems(type, query, true, include).LastOrDefault();
         }
@@ -2894,7 +2892,7 @@ namespace Xod.Engines.Xml
                         string.Format("{0}.{1}", pageCode, rowCodeAtt.Value) : "";
 
                     //clear cached resources of this item and its related items
-                    this.itemsCacheService.Clear(itemCode);
+                    this.itemsCacheService.Clear(type, rowCodeAtt.Value);
 
                     //Delete all applicable reference items
                     var propRefProps = this.propertyService.Properties(type.FullName).Where(s =>
@@ -3093,11 +3091,13 @@ namespace Xod.Engines.Xml
         }
         public void ClearCache()
         {
-            this.ioService.ClearInstanceCache();
+            this.ioService.ClearCurrentCache();
+            this.itemsCacheService.ClearCurrentCache();
         }
         public void ClearCaches()
         {
             this.ioService.ClearAllCache();
+            this.itemsCacheService.ClearAllCache();
         }
         public void Dispose()
         {

@@ -248,7 +248,7 @@ namespace Xod.Services
                 }
                 else
                 {
-                    using(FileStream fs = new FileStream(file.Path, FileMode.Create, FileAccess.Write, FileShare.Read)) {
+                    using(FileStream fs = new FileStream(file.Path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read)) {
                         file.Document.Save(fs);
                     }
                 }
@@ -394,7 +394,7 @@ namespace Xod.Services
             }
         }
 
-        internal void ClearInstanceCache()
+        internal void ClearCurrentCache()
         {
             lock (GetLock())
             {

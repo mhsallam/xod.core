@@ -1,14 +1,14 @@
 {
   "title": "XOD Database (.NETCore)",
   "name": "Xod.Core",
-  "version": "0.1.0-beta",
+  "version": "0.1.0-beta-build-03",
   "description": "Light-weight yet powerfull XML-based OO/NoSQL thread-safe embedded database for .NETCore",
   "authors": [
     "Mohammed Sallam"
   ],
   "packOptions": {
-    "licenseUrl": "https://github.com/mhsallam/xod/blob/master/LICENSE.md",
-    "projectUrl": "https://github.com/mhsallam/xod",
+    "licenseUrl": "https://github.com/mhsallam/xod.core/blob/master/LICENSE.md",
+    "projectUrl": "https://github.com/mhsallam/xod.core",
     "owners": [
       "Mohammed Sallam"
     ],
@@ -47,7 +47,7 @@
     // "centos": {},
     // "debian": {},
     // "osx": {},
-    // "win7-x64": {},
-    // "ubuntu.16.04-x64": {}
+    "win7-x64": {},
+    "ubuntu.16.04-x64": {}
   }
 }
