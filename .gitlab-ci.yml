@@ -1,0 +1,13 @@
+image : microsoft/dotnet:latest
+stages:
+  - build
+before_script:
+  - 'cd ~/src'
+  - 'dotnet restore'
+build:
+ stage: build
+ script:
+  - 'cd ~/src'
+  - 'dotnet build'
+ only:
+   - master
