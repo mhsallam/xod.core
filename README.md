@@ -143,10 +143,6 @@ namespace XodConsoleApplication
 }
 ```
 
-## .NET Framework Version
-This repository has been compiled for .NETCore framework, if you want to use XOD with .NET Framework please visit:
-[XOD (for .NET Framework)](https://github.com/mhsallam/xod)
-
 ## Getting Started Video Tutorials
 * [Video 1](https://www.youtube.com/watch?v=wdvbsG2bjJc)
 * [Video 2](https://www.youtube.com/watch?v=JESli9kbsv0)
