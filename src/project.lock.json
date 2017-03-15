@@ -2001,11 +2001,6 @@
         }
       }
     },
-    ".NETFramework,Version=v4.5": {
-      "System.Security.Cryptography.Algorithms/4.2.0": {
-        "type": "package"
-      }
-    },
     ".NETFramework,Version=v4.6": {
       "System.Security.Cryptography.Algorithms/4.2.0": {
         "type": "package",
@@ -6637,20 +6632,14 @@
     }
   },
   "projectFileDependencyGroups": {
-    "": [],
-    ".NETCoreApp,Version=v1.0": [
-      "Microsoft.NETCore.App >= 1.0.0",
+    "": [
       "System.Security.Cryptography.Algorithms >= 4.2.0"
     ],
-    ".NETFramework,Version=v4.5": [
-      "System",
-      "System.Security.Cryptography.Algorithms >= 4.0.0",
-      "System.Xml",
-      "System.Xml.Linq"
+    ".NETCoreApp,Version=v1.0": [
+      "Microsoft.NETCore.App >= 1.0.0"
     ],
     ".NETFramework,Version=v4.6": [
       "System",
-      "System.Security.Cryptography.Algorithms >= 4.2.0",
       "System.Xml",
       "System.Xml.Linq"
     ]
